@@ -71,6 +71,9 @@ cdef class Context:
         self._attrs = {}
         self._pid = getpid()
 
+    cdef inline void _set_context(self, void* handle):
+        self.handle = handle
+
     def __del__(self):
         """deleting a Context should terminate it, without trying non-threadsafe destroy"""
         self.term()
